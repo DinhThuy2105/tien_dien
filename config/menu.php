@@ -368,6 +368,21 @@ return [
                     'active' => 'admin/users',
                 ],
                 [
+                    'title' => 'Danh sách Admin',
+                    'link' => '/admin/users/admin',
+                    'active' => 'admin/users',
+                ],
+                [
+                    'title' => 'Danh sách khách hàng',
+                    'link' => '/admin/users/khach_hang',
+                    'active' => 'admin/users',
+                ],
+                [
+                    'title' => 'Danh sách nhân viên',
+                    'link' => '/admin/users/nhan_vien',
+                    'active' => 'admin/users',
+                ],
+                [
                     'title' => 'User Profile',
                     'link' => '/admin/users/1',
                     'active' => 'admin/users/*',

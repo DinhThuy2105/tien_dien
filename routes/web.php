@@ -286,7 +286,23 @@ Route::group([
         'as' => 'admin.todos.toggle', 'uses' => 'Demo\TodosController@toggleTodo'
     ]);
 
+    Route::post('user/add-new', [
+        'as' => 'admin.user.create', 'uses' => 'UsersController@create'
+    ]);
+
+    Route::get('users/admin', [
+        'as' => 'admin.user.admin', 'uses' => 'UsersController@getAdmin'
+    ]);
+    Route::get('users/khach_hang', [
+        'as' => 'admin.user.khachhang', 'uses' => 'UsersController@getKhachHang'
+    ]);
+    Route::get('users/nhan_vien', [
+        'as' => 'admin.user.nhanvien', 'uses' => 'UsersController@getNhanVien'
+    ]);
+
+
     Route::resource('users', 'UsersController');
+
 
     // Settings
     //----------------------------------

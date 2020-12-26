@@ -1,28 +1,28 @@
 <form action="{{route('login.post')}}" id="loginForm" method="post">
     {{csrf_field()}}
     <div class="form-group">
-        <input type="email" class="form-control" name="email" placeholder="Enter email">
+        <input type="email" class="form-control" name="email" placeholder="Nhập email">
     </div>
     <div class="form-group">
-        <input type="password" class="form-control" name="password" placeholder="Enter Password">
+        <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu">
     </div>
 
     <div class="other-actions row">
         <div class="col-6">
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="rememberMe" name="remember">
-                <label class="form-check-label" for="rememberMe">Remember Me</label>
+                <label class="form-check-label" for="rememberMe">Ghi nhớ mật khẩu</label>
             </div>
         </div>
         <div class="col-6 text-right">
-            <a href="{{route('forgot-password.index')}}" class="forgot-link">Forgot Password?</a>
+            <a href="{{route('forgot-password.index')}}" class="forgot-link">Quên mật khẩu?</a>
         </div>
     </div>
-    <button class="btn btn-theme btn-full">Login</button>
+    <button class="btn btn-theme btn-full">Đăng nhập</button>
     <div class="form-group other-options">
         <div class="social-caption pull-left">
             <h6>
-                Or Login With
+                Đăng nhập bằng cách khác
             </h6>
         </div>
         <div class="social-icons pull-right">
