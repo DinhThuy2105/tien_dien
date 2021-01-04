@@ -33,7 +33,8 @@ class LoaiDienController extends Controller
         $loaidien->ten_loai_dien = $request['tenloaidien'];
         $loaidien->save();
 
-        return redirect()->route('admin.loaidien.index');
+        $loaidien = LoaiDien::get();
+        return view('admin.loaidien.index')->with('loaidien', $loaidien);
     }
 
     public function store(Request $request)
@@ -43,7 +44,9 @@ class LoaiDienController extends Controller
 
         $loaidien->ten_loai_dien = $request['tenloaidien'];
         $loaidien->save();
-        return redirect()->back('admin.loaidien.index');
+        
+        $loaidien = LoaiDien::get();
+        return view('admin.loaidien.index')->with('loaidien', $loaidien);
     }
 
     public function destroy($id)
