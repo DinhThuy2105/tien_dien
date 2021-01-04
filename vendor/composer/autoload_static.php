@@ -421,10 +421,20 @@ class ComposerStaticInit77df408c0a07212f209fd226070a5baf
     );
 
     public static $classMap = array (
+        'AddDonGiaToChiTietHoaDonTable' => __DIR__ . '/../..' . '/database/migrations/2021_01_04_022758_add_don_gia_to_chi_tiet_hoa_don_table.php',
+        'AddMaKhuVucToUserTable' => __DIR__ . '/../..' . '/database/migrations/2020_12_27_081826_add_ma_khu_vuc_to_user_table.php',
+        'AddMaLoaiDienToUserTable' => __DIR__ . '/../..' . '/database/migrations/2020_12_27_073701_add_ma_loai_dien_to_user_table.php',
         'AddProvidersToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_10_114222_add_providers_to_users_table.php',
+        'CreateChiTietHoaDonTable' => __DIR__ . '/../..' . '/database/migrations/2020_12_27_085729_create_chi_tiet_hoa_don_table.php',
+        'CreateDienKeTable' => __DIR__ . '/../..' . '/database/migrations/2020_12_27_082557_create_dien_ke_table.php',
         'CreateFailedJobsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_25_073709_create_failed_jobs_table.php',
+        'CreateGiaDienTable' => __DIR__ . '/../..' . '/database/migrations/2020_12_27_050402_create_gia_dien_table.php',
+        'CreateHoaDonTable' => __DIR__ . '/../..' . '/database/migrations/2020_12_27_085720_create_hoa_don_table.php',
         'CreateJobsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_25_073654_create_jobs_table.php',
+        'CreateKhuVucTable' => __DIR__ . '/../..' . '/database/migrations/2020_12_27_075833_create_khu_vuc_table.php',
+        'CreateLoaiDienTable' => __DIR__ . '/../..' . '/database/migrations/2020_12_27_032350_create_loai_dien_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreatePhuongTable' => __DIR__ . '/../..' . '/database/migrations/2020_12_27_075112_create_phuong_table.php',
         'CreateSettingsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_13_060834_create_settings_table.php',
         'CreateTodosTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_18_045906_create_todos_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',

@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    protected $dates = ['birthday'];
     use Notifiable;
 
     /**
@@ -37,5 +38,18 @@ class User extends Authenticatable
         $email = $request->email;
         $password = $request->password;
         return (\Auth::attempt(['email' => $email, 'password' => $password], $remember));
+    }
+
+    public function loaidien()
+    {
+        return $this->hasOne('App\LoaiDien', 'ma_loai_dien');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function dienke()
+    {
+        return $this->hasOne('App\DienKe','ma_khach_hang');
     }
 }

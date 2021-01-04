@@ -31208,6 +31208,7 @@ code, .code {
   width: 100%;
   z-index: 1000;
   background-color: #318ad6;
+  display: flex;
 }
 
 .sidebar-left {
@@ -31504,6 +31505,8 @@ code, .code {
   float: right;
   list-style: none;
   margin: 0;
+  margin-left: auto;
+  order: 2;
 }
 
 .action-list li {

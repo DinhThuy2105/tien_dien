@@ -2,31 +2,42 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\LoaiDien;
 use Illuminate\Http\Request;
 class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::get();
-        return view('admin.users.index')->with('users', $users);
+        $loaidien = LoaiDien::get();
+        $users = User::with('loaidien')->get();
+        return view('admin.users.index')->with(['users' => $users, 'loaidien' => $loaidien]);
     }
 
     public function getAdmin()
     {
-        $users = User::where('role','Admin')->get();
-        return view('admin.users.listAdmin')->with('users', $users);
+        $loaidien = LoaiDien::get();
+        $users = User::with('loaidien')->where('role','Admin')->get();
+        return view('admin.users.listAdmin')->with(['users' => $users, 'loaidien' => $loaidien]);
     }
 
     public function getKhachHang()
     {
-        $users = User::where('role','Khách Hàng')->get();
-        return view('admin.users.listKhachHang')->with('users', $users);
+        $loaidien = LoaiDien::get();
+        $users = User::with('loaidien')->where('role','Khách Hàng')->get();
+        return view('admin.users.listKhachHang')->with(['users' => $users, 'loaidien' => $loaidien]);
     }
 
     public function getNhanVien()
     {
-        $users = User::where('role','Nhân Viên')->get();
-        return view('admin.users.listNhanVien')->with('users', $users);
+        $loaidien = LoaiDien::get();
+        $users = User::with('loaidien')->where('role','Nhân Viên')->get();
+        return view('admin.users.listNhanVien')->with(['users' => $users, 'loaidien' => $loaidien]);
+    }
+
+    public function getHoaDon($id){
+        $user = User::findOrFail($id);
+        $hoadon = $user->dienke()->with('hoadon', 'hoadon.chitiethd')->get();
+        return view('admin.users.listHoaDon')->with(['user' => $user, 'hoadon' => $hoadon]);
     }
     
     public function show($id)
@@ -34,6 +45,42 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
 
         return view('admin.users.show')->with('user', $user);
+    }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        $loaidien = LoaiDien::get();
+
+        return view('admin.users.edit')->with(['user' => $user, 'loaidien' => $loaidien]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->name = $request['username'];
+        $user->firstname = $request['firstname'];
+        $user->lastname = $request['lastname'];
+        $user->email = $request['email'];
+        $user->phone = $request['phone'];
+        $user->gender = (int)$request['gender'];
+        if(!empty($request['password'])){
+            $user->password = bcrypt($request['password']);
+        }
+        $user->birthday =  date('Y-m-d', strtotime($request['birthday']));
+        // $user->role = $request['role'];
+        $user->ma_loai_dien = $request['maloaidien'];
+
+        $user->save();
+        $users = User::get();
+        if($request['role'] == "Admin"){
+            return redirect()->route('admin.user.admin');
+        }
+        if($request['role'] == "Khách hàng"){
+            return redirect()->route('admin.user.khachhang');
+        }
+        return redirect()->route('admin.user.nhanvien');
     }
 
     public function create(Request $request)
@@ -46,12 +93,12 @@ class UsersController extends Controller
         $user->email = $request['email'];
         $user->phone = $request['phone'];
         $user->gender = (int)$request['gender'];
-        $user->password = $request['password'];
+        $user->password = bcrypt($request['password']);
         $user->birthday =  date('Y-m-d', strtotime($request['birthday']));
         $user->role = $request['role'];
+        $user->ma_loai_dien = $request['maloaidien'];
         $user->save();
-        $users = User::get();
-        return view('admin.users.index')->with('users', $users);
+        return redirect()->back();
     }
 
     public function destroy($id)
