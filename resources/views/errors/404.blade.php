@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laraspace - Laravel Admin</title>
+    <title>Điện lực thành phố Vinh</title>
     <script src="{{asset('/assets/admin/js/core/pace.js')}}"></script>
     <link href="{{ mix('/assets/admin/css/laraspace.css') }}" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width,initial-scale=1">

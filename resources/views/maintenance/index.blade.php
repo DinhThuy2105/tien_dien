@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laraspace - Laravel Admin</title>
+    <title>Điện lực thành phố Vinh</title>
     <script src="{{asset('/assets/admin/js/core/pace.js')}}"></script>
     <link href="{{ mix('/assets/admin/css/laraspace.css') }}" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -29,7 +29,7 @@
                 <h1>Under Maintenance</h1>
                 <h5>PLEASE GIVE US A MOMENT TO SORT THINGS OUT</h5>
                 
-                <p> Powered by <a href="http://bytefury.com" target="_blank">Bytefury</a> </p>
+                <p>Thiết kể bởi Hiền Lê </p>
                 
                 <div class="social-icons">
                     <a href="/auth/facebook" class="btn btn-default text-primary btn-icon"><i class="icon-fa icon-fa-facebook"></i></a>

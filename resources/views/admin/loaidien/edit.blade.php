@@ -25,7 +25,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputUserName">Tên loại điện</label>
-                                        <input type="text" class="form-control" id="inputUserName" placeholder="Tên loại điện" value="{{$loaidien->ten_loai_dien}}" name="username">
+                                        <input type="text" class="form-control" id="inputUserName" placeholder="Tên loại điện" value="{{$loaidien->ten_loai_dien}}" name="tenloaidien">
                                     </div>
                                 </div>
                             </div>

@@ -7,11 +7,10 @@
 @section('content')
     <div class="main-content">
         <div class="page-header">
-            <h3 class="page-title">Users</h3>
+            <h3 class="page-title">Người dùng</h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Trang chủ</a></li>
-                <li class="breadcrumb-item"><a href="{{route('users.index')}}">Người dùng</a></li>
-                <li class="breadcrumb-item active">Users</li>
+                <li class="breadcrumb-item"><a href="{{route('users.index')}}">Khách hàng</a></li>
             </ol>
             <div class="page-actions">
                 <a href="#" class="btn btn-primary" data-toggle="modal" data-target=".ls-example-modal-lg"><i class="icon-fa icon-fa-plus"></i>Thêm mới</a>
@@ -22,7 +21,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h6>Tất cả người dùng</h6>
+                        <h6>Danh sách khách hàng</h6>
 
                         <div class="card-actions">
 

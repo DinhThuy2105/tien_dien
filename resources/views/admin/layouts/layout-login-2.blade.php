@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laraspace - Laravel Admin</title>
+    <title>Điện lực thành phố Vinh</title>
     <link href="{{ mix('/assets/admin/css/laraspace.css') }}" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -17,8 +17,8 @@
         </div>
         @yield('content')
         <div class="page-copyright">
-            <p>Powered by <a href="http://bytefury.com" target="_blank">Bytefury</a></p>
-            <p>Laraspace © {{ date('Y') }}</p>
+            <p>Thiết kế bởi Hiền Lê</a></p>
+            <p>Điện lực Thành phố vinh © {{ date('Y') }}</p>
         </div>
     </div>
 </div>

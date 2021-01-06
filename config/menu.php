@@ -41,13 +41,13 @@ return [
             'icon' => 'icon-fa icon-fa-superpowers'
         ],
         [
-            'title' => 'Users',
+            'title' => 'Người dùng',
             'link' => '#',
             'active' => 'admin/users*',
             'icon' => 'icon-fa icon-fa-user',
             'children' => [
                 [
-                    'title' => 'Danh sách admin',
+                    'title' => 'Danh sách người quản lý',
                     'link' => '/admin/users/admin',
                     'active' => '/admin/users/admin',
                 ],

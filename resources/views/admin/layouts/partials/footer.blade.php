@@ -1,5 +1,5 @@
 <footer class="site-footer">
     <div class="text-right">
-      Powered by <a href="http://bytefury.com" target="_blank">Bytefury</a>
+      Điện lực thành phố Vinh
     </div>
 </footer>

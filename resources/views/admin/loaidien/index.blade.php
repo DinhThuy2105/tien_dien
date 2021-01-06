@@ -7,7 +7,7 @@
 @section('content')
     <div class="main-content">
         <div class="page-header">
-            <h3 class="page-title">Users</h3>
+            <h3 class="page-title">Loại điện</h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Trang chủ</a></li>
                 <li class="breadcrumb-item"><a href="{{route('loaidien.index')}}">Loại điện</a></li>

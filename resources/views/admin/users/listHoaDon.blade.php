@@ -12,7 +12,7 @@
 @section('content')
     <div class="main-content">
         <div class="page-header">
-            <h3 class="page-title">Users</h3>
+            <h3 class="page-title">Hóa đơn</h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Trang chủ</a></li>
                 <li class="breadcrumb-item"><a href="{{route('users.index')}}">{{$user->name}}</a></li>
