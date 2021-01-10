@@ -2,6 +2,28 @@
 
 @section('scripts')
     <script src="/assets/admin/js/users/users.js"></script>
+    <script>
+    let phuong = <?php echo $phuong ?>;
+    function onChangeSelect(data){
+        var id = data.value; // get selected value
+        var index = phuong.findIndex( item => item.ma_phuong == id)
+        if(index >= 0){
+            let viewItem ="";
+            let viewCategory ="";
+            if(phuong[index].khuvuc){
+                phuong[index].khuvuc.map( (item,index) => {
+                    if(index == 0){
+                        viewItem += "<option selected value="+item.ma_khu_vuc+">"+item.ten_khu_vuc+"</option>"
+                    }
+                    else{
+                        viewItem += "<option value="+item.ma_khu_vuc+">"+item.ten_khu_vuc+"</option>"
+                    }
+                })
+            }
+            document.getElementById(`select-kv`).innerHTML = viewItem;
+        }
+    };
+    </script>
 @stop
 
 @section('content')
@@ -94,41 +116,41 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputUserName">Tên đăng nhập</label>
-                                        <input type="text" class="form-control" id="inputUserName" placeholder="Tên đăng nhập" name="username">
+                                        <input type="text" class="form-control" id="inputUserName" placeholder="Tên đăng nhập" name="username" required>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="inputFirstName">Họ</label>
-                                            <input type="text" class="form-control" id="inputFirstName" name="firstname"
+                                            <input type="text" class="form-control" id="inputFirstName" name="firstname" required
                                                 placeholder="Nhập">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="inputLastName">Tên</label>
-                                            <input type="text" class="form-control" id="inputLastName" name="lastname"
+                                            <label for="inputLastName">Tên</label> 
+                                            <input type="text" class="form-control" id="inputLastName" name="lastname" required
                                                 placeholder="Nhập tên">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail">Email</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail" name="email"
+                                        <input type="text" class="form-control" id="exampleInputEmail" name="email" 
                                             aria-describedby="emailHelp" placeholder="Nhập email">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPhone">Số điện thoại</label>
                                         <input type="text" class="form-control" id="exampleInputPhone" name="phone"
-                                            aria-describedby="phoneHelp" placeholder="Nhập sô điện thoại">
+                                            aria-describedby="phoneHelp" placeholder="Nhập sô điện thoại" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Giới tính</label>
 
                                         <div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="gender" value="0"
+                                                <input class="form-check-input" type="radio" name="gender" value="0" required
                                                     id="checkMale" >
                                                 <label class="form-check-label" for="checkMale">Nam</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="gender" value="1"
+                                                <input class="form-check-input" type="radio" name="gender" value="1" required
                                                     id="checkFemale" >
                                                 <label class="form-check-label" for="checkFemale">Nữ</label>
                                             </div>
@@ -143,7 +165,7 @@
                                     <div class="form-group">
                                         <label>Ngày sinh</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control ls-datepicker" value="" name="birthday">
+                                            <input type="text" class="form-control ls-datepicker" value="" name="birthday" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
                                                         <i class="icon-fa icon-fa-calendar"></i>
@@ -153,10 +175,28 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputLoaiDien">Loại điện</label><br>
-                                        <select class="form-control ls-select2 w-100" name="maloaidien">
+                                        <select class="form-control ls-select2 w-100" name="maloaidien" required>
                                             @foreach($loaidien as $ld)
                                             <option value="{{$ld->ma_loai_dien}}">{{$ld->ten_loai_dien}}</option>
                                             @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputLoaiDien">Phường</label><br>
+                                        <select class="form-control ls-select2 w-100" name="maphuong" required onchange="onChangeSelect(this);">
+                                            @foreach($phuong as $p)
+                                            <option value="{{$p->ma_phuong}}">{{$p->ten_phuong}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputLoaiDien">Khu vực</label><br>
+                                        <select class="form-control ls-select2 w-100" name="makhuvuc" required id="select-kv">
+                                            @if(!empty($phuong[0]->khu_vuc))
+                                            @foreach($phuong[0]->khu_vuc as $kv)
+                                            <option value="{{$kv->ma_khu_vuc}}">{{$kv->ma_khu_vuc}}</option>
+                                            @endforeach
+                                            @endif
                                         </select>
                                     </div>
                                 </div>

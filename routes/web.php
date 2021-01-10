@@ -144,7 +144,7 @@ Route::group([
     ]);
 
     Route::get('users/hoadon/xacnhan/{id}', [
-        'as' => 'hoadon.xacnhan', 'uses' => 'UsersController@getHoaDon'
+        'as' => 'hoadon.xacnhan', 'uses' => 'HoaDonController@update'
     ]);
 
 

@@ -25,7 +25,7 @@ return [
     |
     */
 
-    'skintools' => true,
+    'skintools' => false,
 
 
     /*

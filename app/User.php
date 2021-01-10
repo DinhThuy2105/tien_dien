@@ -29,7 +29,12 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return ($this->role == 'admin');
+        return ($this->role == 'admin' || $this->role == 'Admin');
+    }
+
+    public function isStaff()
+    {
+        return ($this->role == 'Nhân Viên');
     }
 
     public static function login($request)
@@ -42,7 +47,12 @@ class User extends Authenticatable
 
     public function loaidien()
     {
-        return $this->hasOne('App\LoaiDien', 'ma_loai_dien');
+        return $this->belongsTo('App\LoaiDien', 'ma_loai_dien');
+    }
+
+    public function khuvuc()
+    {
+        return $this->belongsTo('App\KhuVuc', 'ma_khu_vuc','ma_khu_vuc');
     }
 
     /**

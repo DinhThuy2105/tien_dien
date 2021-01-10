@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\LoaiDien;
+use App\Phuong;
 use Illuminate\Http\Request;
 class UsersController extends Controller
 {
@@ -16,22 +17,25 @@ class UsersController extends Controller
     public function getAdmin()
     {
         $loaidien = LoaiDien::get();
+        $phuong = Phuong::with('khuvuc')->get();
         $users = User::with('loaidien')->where('role','Admin')->get();
-        return view('admin.users.listAdmin')->with(['users' => $users, 'loaidien' => $loaidien]);
+        return view('admin.users.listAdmin')->with(['users' => $users, 'loaidien' => $loaidien, 'phuong' => $phuong]);
     }
 
     public function getKhachHang()
     {
         $loaidien = LoaiDien::get();
+        $phuong = Phuong::with('khuvuc')->get();
         $users = User::with('loaidien')->where('role','Khách Hàng')->get();
-        return view('admin.users.listKhachHang')->with(['users' => $users, 'loaidien' => $loaidien]);
+        return view('admin.users.listKhachHang')->with(['users' => $users, 'loaidien' => $loaidien, 'phuong' => $phuong]);
     }
 
     public function getNhanVien()
     {
         $loaidien = LoaiDien::get();
+        $phuong = Phuong::with('khuvuc')->get();
         $users = User::with('loaidien')->where('role','Nhân Viên')->get();
-        return view('admin.users.listNhanVien')->with(['users' => $users, 'loaidien' => $loaidien]);
+        return view('admin.users.listNhanVien')->with(['users' => $users, 'loaidien' => $loaidien, 'phuong' => $phuong]);
     }
 
     public function getHoaDon($id){
@@ -49,10 +53,11 @@ class UsersController extends Controller
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::with('khuvuc', 'khuvuc.phuong')->findOrFail($id);
         $loaidien = LoaiDien::get();
+        $phuong = Phuong::with('khuvuc')->get();
 
-        return view('admin.users.edit')->with(['user' => $user, 'loaidien' => $loaidien]);
+        return view('admin.users.edit')->with(['user' => $user, 'loaidien' => $loaidien, 'phuong' => $phuong]);
     }
 
     public function update(Request $request, $id)
@@ -65,6 +70,7 @@ class UsersController extends Controller
         $user->email = $request['email'];
         $user->phone = $request['phone'];
         $user->gender = (int)$request['gender'];
+        $user->ma_khu_vuc = $request['makhuvuc'];
         if(!empty($request['password'])){
             $user->password = bcrypt($request['password']);
         }
@@ -96,6 +102,7 @@ class UsersController extends Controller
         $user->password = bcrypt($request['password']);
         $user->birthday =  date('Y-m-d', strtotime($request['birthday']));
         $user->role = $request['role'];
+        $user->ma_khu_vuc = $request['makhuvuc'];
         $user->ma_loai_dien = $request['maloaidien'];
         $user->save();
         return redirect()->back();

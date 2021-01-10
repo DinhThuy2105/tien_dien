@@ -57,7 +57,10 @@
                                 <td>{{!empty($dk->hoadon) ? ($dk->hoadon->trang_thai ? 'Đã thanh toán' : 'Chưa thanh toán') : ''}}</td>
                                 <td>{{$dk->created_at}}</td>
                                 <td><a data-toggle='modal' data-target='#detail{{$dk->ma_dien_ke}}' class="btn btn-default btn-sm"><i class="icon-fa icon-fa-edit"></i> Chi tiết</a>
-                                    <a  data-toggle='modal' data-target='#confirm{{$dk->ma_dien_ke}}' class="btn btn-default btn-sm" > <i class="icon-fa icon-fa-check"></i> Thanh toán</a></td>
+                                @if(!empty($dk->hoadon) && !$dk->hoadon->trang_thai)
+                                    <a  data-toggle='modal' data-target='#confirm{{$dk->ma_dien_ke}}' class="btn btn-default btn-sm" > <i class="icon-fa icon-fa-check"></i> Thanh toán</a>
+                                @endif
+                                </td>
                             </tr>
                             <div class='modal fade' id="confirm{{$dk->ma_dien_ke}}">
                                 <div class='modal-dialog'>

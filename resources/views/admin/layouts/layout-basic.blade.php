@@ -12,7 +12,7 @@
     @include('admin.layouts.partials.favicons')
     @yield('styles')
 </head>
-<body class="layout-default skin-default">
+<body class="layout-default skin-arryn">
     @include('admin.layouts.partials.laraspace-notifs')
 
     <div id="app" class="site-wrapper">

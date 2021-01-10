@@ -18,7 +18,7 @@ class HoaDonController extends Controller
         $hoadon->trang_thai = true;
         $hoadon->save();
 
-        return redirect()->route('users.hoadon');
+        return redirect()->back();
     }
 
     

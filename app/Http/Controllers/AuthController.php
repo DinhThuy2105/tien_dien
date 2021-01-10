@@ -17,7 +17,7 @@ class AuthController extends Controller
     {
         if (User::login($request)) {
             flash('Welcome to Laraspace.')->success('Welcome to Laraspace.');
-            if (Auth::user()->isAdmin()) {
+            if (Auth::user()->isAdmin() || Auth::user()->isStaff) {
                 return redirect()->to('/admin');
             } else {
                 return redirect()->to('/');

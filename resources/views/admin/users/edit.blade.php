@@ -2,6 +2,36 @@
 
 @section('scripts')
     <script src="/assets/admin/js/users/users.js"></script>
+    <script>
+    let phuong = <?php echo $phuong ?>;
+    $('.password').hide();
+    function onChangeSelect(data){
+        var id = data.value; // get selected value
+        var index = phuong.findIndex( item => item.ma_phuong == id)
+        if(index >= 0){
+            let viewItem ="";
+            let viewCategory ="";
+            if(phuong[index].khuvuc){
+                phuong[index].khuvuc.map( (item,index) => {
+                    if(index == 0){
+                        viewItem += "<option selected value="+item.ma_khu_vuc+">"+item.ten_khu_vuc+"</option>"
+                    }
+                    else{
+                        viewItem += "<option value="+item.ma_khu_vuc+">"+item.ten_khu_vuc+"</option>"
+                    }
+                })
+            }
+            document.getElementById(`select-kv`).innerHTML = viewItem;
+        }
+    };
+    $('.checkbox').click(function (event) {
+            if (this.checked) {
+                $('.password').show();
+            } else {
+                $('.password').hide();
+            }
+    });
+    </script>
 @stop
 
 @section('content')
@@ -67,11 +97,6 @@
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword">Mật khẩu</label>
-                                        <input type="password" class="form-control" name="password"
-                                            id="exampleInputPassword1=" placeholder="Password" required>
-                                    </div>
-                                    <div class="form-group">
                                         <label>Ngày sinh</label>
                                         <div class="input-group">
                                             <input type="text" class="form-control ls-datepicker" value="{!! !empty($user->birthday) ?  $user->birthday->format('m/d/Y'): '' !!}" name="birthday">
@@ -93,6 +118,55 @@
                                                 @endif
                                             @endforeach
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputLoaiDien">Phường</label><br>
+                                        <select class="form-control ls-select2 w-100" name="maphuong" required onchange="onChangeSelect(this);">
+                                            @foreach($phuong as $p)
+                                                @if(!empty($user->khuvuc) && !empty($user->khuvuc->phuong))
+                                                    @if($user->khuvuc->phuong->ma_phuong === $p->ma_phuong)
+                                                    <option selected value="{{$p->ma_phuong}}">{{$p->ten_phuong}}</option>
+                                                    @else
+                                                    <option value="{{$p->ma_phuong}}">{{$p->ten_phuong}}</option>
+                                                    @endif
+                                                @else
+                                                <option value="{{$p->ma_phuong}}">{{$p->ten_phuong}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputLoaiDien">Khu vực</label><br>
+                                        <select class="form-control ls-select2 w-100" name="makhuvuc" required id="select-kv">
+                                        @php $index = 0; @endphp
+                                        @foreach($phuong as $i=>$p)
+                                                @if(!empty($user->khuvuc) && !empty($user->khuvuc->phuong))
+                                                    @if($user->khuvuc->phuong->ma_phuong === $p->ma_phuong)
+                                                        @php $index = $i; @endphp
+                                                    @endif
+                                                @endif
+                                        @endforeach
+                                            @if(!empty($phuong[$index]->khuvuc))
+                                                @foreach($phuong[$index]->khuvuc as $kv)
+                                                @if($user->ma_khu_vuc == $kv->ma_khu_vuc)
+                                                <option selected value="{{$kv->ma_khu_vuc}}">{{$kv->ten_khu_vuc}}</option>
+                                                @else
+                                                <option value="{{$kv->ma_khu_vuc}}">{{$kv->ten_khu_vuc}}</option>
+                                                @endif
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                       
+                                    </div>
+
+                                    <div class="form-group d-flex">
+                                        <input type="checkbox" class="mr-3 mt-1 checkbox">
+                                        <label>Change Password</label>
+                                    </div>
+                                    <div class="form-group password">
+                                        <label for="exampleInputPassword">Mật khẩu</label>
+                                        <input type="password" class="form-control" name="password"
+                                            id="exampleInputPassword1=" placeholder="Password">
                                     </div>
                                     <!-- <div class="form-group">
                                         <label for="exampleInputRole">Quyền</label><br>

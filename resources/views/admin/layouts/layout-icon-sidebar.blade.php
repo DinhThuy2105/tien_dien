@@ -10,7 +10,7 @@
     @include('admin.layouts.partials.favicons')
     @yield('styles')
 </head>
-<body class="layout-icon-sidebar skin-default">
+<body class="layout-icon-sidebar skin-arryn">
 
     <div id="app" class="site-wrapper">
         @include('admin.layouts.partials.laraspace-notifs')

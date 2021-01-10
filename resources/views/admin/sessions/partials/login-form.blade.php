@@ -1,7 +1,7 @@
 <form action="{{route('login.post')}}" id="loginForm" method="post">
     {{csrf_field()}}
     <div class="form-group">
-        <input type="email" class="form-control" name="email" placeholder="Nhập email">
+        <input type="email" class="form-control mt-0" name="email" placeholder="Nhập email">
     </div>
     <div class="form-group">
         <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu">

@@ -14522,6 +14522,7 @@ button.toast-close-button {
   margin: 0;
   position: relative;
   vertical-align: middle;
+  width: 100% !important;
 }
 
 .select2-container .select2-selection--single {
@@ -33679,13 +33680,14 @@ code, .code {
 }
 
 .login-page .logo-main {
-  margin-bottom: 40px;
+  margin-bottom: 0px;
   text-align: center;
 }
 
 .login-page .logo-main img {
-  height: auto;
-  width: 300px;
+  height: 10%;
+  width: 50%;
+  /* height: 400px; */
 }
 
 .login-page .other-options {

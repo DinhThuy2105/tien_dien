@@ -11,7 +11,7 @@
     @if(Auth::check())
       <li>
         <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar">
-          <img src="{{asset('/assets/admin/img/avatars/avatar.png')}}" alt="Avatar"></a>
+          <img src="{{asset('/assets/admin/img/avatars/avatar.jpg')}}" alt="Avatar"></a>
           <div class="dropdown-menu dropdown-menu-right notification-dropdown">
             <a class="dropdown-item" href="/logout"><i class="icon-fa icon-fa-sign-out"></i> Logout</a>
           </div>
